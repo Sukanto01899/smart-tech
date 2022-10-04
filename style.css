@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+nav{
+    background: linear-gradient(to right, #004e92, #000428);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    padding: 3px;
+    animation: logoAn 1s ease-in-out normal infinite;
+    transition: 0.3s;
+}
+.logo img:hover{
+    width: 50px;
+    height: 50px;
+    box-shadow: 2px 2px 10px 1px white;
+    background-color: rgba(255, 255, 255, 0.29);
+}
+@keyframes logoAn {
+    0%{
+        margin-bottom: 3px;
+    }
+    100%{
+        margin-top: 3px;
+        box-shadow: 2px 2px 10px 1px rgb(216, 215, 215);
+    }
+}
+.logo span{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: white;
+    margin-left: 10px;
+}
+.search{
+    position: relative;
+}
+.search input{
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    width: 300px;
+    transition: 0.3s;
+}
+.search input:focus{
+    width: 400px;
+}
+.search button{
+    padding: 8px;
+    border: none;
+    font-size: 16px;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: linear-gradient(to right, #004e92, #000428);
+    color: white;
+    box-shadow: 1px 1px 1px rgb(196, 196, 196);
+    transition: 0.2s;
+}
+.search button:hover{
+    background: linear-gradient(to right, #066ec8, #040e7d);
+}
+
+
+
+/* Responsive */
+@media only screen and (max-width: 580px) {
+    nav{
+        flex-direction: column;
+         margin: auto;
+    }
+    .search{
+        margin-top: 20px;
+    }
+    .search input{
+        width: 300px;
+    }
+}
