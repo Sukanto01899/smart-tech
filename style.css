@@ -224,7 +224,23 @@ table tr td{
 }
 
 
+/* Show More Button */
+#show-more{
+    padding: 10px;
+    width: 150px;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    display: none;
+    background-image: linear-gradient(to right, #000428, #004e92);
+}
 
+#phone-details{
+    display: none;
+}
 
 /* Responsive */
 @media only screen and (max-width: 580px) {

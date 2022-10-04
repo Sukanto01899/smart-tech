@@ -20,33 +20,47 @@ const getData = async (searchText)=>{
     showSearchResult(data);
 }
 //Show result on UI
+const morePhone = [] // Array for load more
+const phoneResultBox = document.getElementById('phone-result');
+const showBtn = document.getElementById('show-more');
 const showSearchResult = data => {
-    const phoneResultBox = document.getElementById('phone-result');
     phoneResultBox.textContent = ''
 
     if(data.data.length === 0){
-        console.log('not found')
+        const h1 = document.createElement('h1');
+        h1.classList.add('not-found')
+        h1.innerText = 'Not found any phone'
+        phoneResultBox.appendChild(h1)
+        showBtn.style.display  = 'none'
     }
     else if(data.data.length > 20){
-        for(const phone of data.data){ //loop
+        for(let i = 0; i<20; i++){ //loop
             const mainDiv = document.createElement('div');
             mainDiv.classList.add('card');
              mainDiv.innerHTML = `
              <div class="img">
-                    <img src="${phone.image}" alt="">
-                    <span>${phone.brand}</span>
+                    <img src="${data.data[i].image}" alt="">
+                    <span>${data.data[i].brand}</span>
                 </div>
                <div class="card-body">
-                <h4>${phone.phone_name}</h4>
-                <button onclick="fetchSlug('${phone.slug}')">Details</button>
+                <h4>${data.data[i].phone_name}</h4>
+                <button onclick="fetchSlug('${data.data[i].slug}')">Details</button>
                </div>`
     
                phoneResultBox.appendChild(mainDiv);
         }
+
+        for(const phone of data.data){
+            if(data.data.indexOf(phone) > 20){
+                morePhone.push(phone)
+            }
+        }
+        showBtn.style.display  = 'block'
     }
     else{
-        for(const phone of data.data){ //loop
-            const mainDiv = document.createElement('div');
+        for(const phone of data.data){
+        
+                const mainDiv = document.createElement('div');
             mainDiv.classList.add('card');
              mainDiv.innerHTML = `
              <div class="img">
@@ -59,11 +73,13 @@ const showSearchResult = data => {
                </div>`
     
                phoneResultBox.appendChild(mainDiv);
+            
         }
     }
     
     showSpin('none')
 }
+
 
 const fetchSlug = async (slug)=>{
     const url = `https://openapi.programming-hero.com/api/phone/${slug}`;
@@ -71,11 +87,11 @@ const fetchSlug = async (slug)=>{
     const data = await res.json();
     showDetails(data)
 }
-
+//Phone details show
 const showDetails = data =>{
-    console.log(data)
     const phoneDetails = document.getElementById('phone-details');
     const detailsBox = document.getElementById('details-box');
+    phoneDetails.style.display = 'inline'
     detailsBox.innerHTML = `
     <div class="img-name">
                 <img src="${data.data.image}" alt="">
@@ -141,4 +157,24 @@ const showDetails = data =>{
             </div>`
 
             phoneDetails.appendChild(detailsBox)
+}
+
+//Load more phone function
+const showMore = () =>{
+    morePhone.forEach(phone => {
+        const mainDiv = document.createElement('div');
+        mainDiv.classList.add('card');
+         mainDiv.innerHTML = `
+         <div class="img">
+                <img src="${phone.image}" alt="">
+                <span>${phone.brand}</span>
+            </div>
+           <div class="card-body">
+            <h4>${phone.phone_name}</h4>
+            <button onclick="fetchSlug('${phone.slug}')">Details</button>
+           </div>`
+
+           phoneResultBox.appendChild(mainDiv);
+    })
+    showBtn.style.display  = 'none'
 }
