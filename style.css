@@ -181,6 +181,47 @@ nav{
     }
 }
 
+/* Phone details */
+.details-box{
+    width: 60%;
+    margin: 5% auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #d3eaff;
+}
+.img-name{
+    flex-basis: 20%;
+}
+.img-name img{
+    width: 80px;
+}
+.img-name h1{
+    font-size: 18px;
+    margin-top: 10px;
+}
+.img-name p{
+    font-size: 14px;
+    margin-top: 10px;
+}
+.specification{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    flex-basis: 75%;
+    text-align: center;
+}
+table{
+    margin: auto;
+    border-collapse: collapse;
+}
+table, tr, td{
+    border: 0.3px solid #004e92;
+}
+table tr td{
+    padding: 3px 8px;
+    text-align: left;
+}
 
 /* Responsive */
 @media only screen and (max-width: 580px) {
