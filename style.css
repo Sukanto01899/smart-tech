@@ -88,6 +88,7 @@ nav{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 50px;
+    position: relative;
 }
 .card{
     width: 250px;
@@ -144,10 +145,41 @@ nav{
 }
 
 
+/* //spiner */
+#spiner{
+    position: fixed;
+    background-color:#004e92;
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+    animation: spin 0.5s ease-in none infinite;
+    display: none;
+    z-index: 99;
+}
+.spin{
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(30%, 20%);
+}
 
-
-
-
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(90deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
 
 
 /* Responsive */
