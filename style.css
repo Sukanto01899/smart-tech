@@ -185,7 +185,7 @@ nav{
 .details-box{
     width: 60%;
     margin: 5% auto;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     background-color: #d3eaff;
@@ -223,6 +223,9 @@ table tr td{
     text-align: left;
 }
 
+
+
+
 /* Responsive */
 @media only screen and (max-width: 580px) {
     nav{
@@ -242,5 +245,10 @@ table tr td{
     }
     .card{
         width: 80%;
+    }
+    .details-box{
+        width: 100%;
+        flex-direction: column;
+        margin-top: 26%;
     }
 }
